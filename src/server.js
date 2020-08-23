@@ -20,15 +20,32 @@ app.use(
 
 // app.use(log) used for the entire app
 
-// create a router
+// create a router instance
 
 const router = Router()
 
+// a route could have different verbs but same end point like so
+// const routes = [get '/cat', post '/cat', get '/cat/:id']
+
+// you can do the verbs in one line with a router from express by
+
+router
+  .route('/cat')
+  .get((req, res) => {
+    res.send({ value: 'a get request' })
+  })
+  .post((req, res) => {
+    res.send(req.body)
+  })
+
+app.use('/', router)
 router.get('/end', (req, res) => {
   res.send({ done: 'yes' })
 })
 
-app.use('/api', router)
+app.use(router) /* root controller for the router */
+app.use('/anotherapi', router) /* root controller for the router */
+
 const log = (req, res, next) => {
   console.log('loging')
   next()
