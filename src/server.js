@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import config from './config'
 import cors from 'cors'
 import { connect } from './utils/db'
+import itemRouter from './resources/item/item.router'
 
 export const app = express()
 
@@ -14,10 +15,12 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
+app.use('/api/item', itemRouter)
+
 export const start = async () => {
   try {
     await connect()
-    app.listen(config.port, () => {
+    app.listen(config.port || 3000, () => {
       console.log(`REST API on http://localhost:${config.port}/api`)
     })
   } catch (e) {
