@@ -20,7 +20,7 @@ app.use('/api/item', itemRouter)
 export const start = async () => {
   try {
     await connect()
-    app.listen(config.port || 3000, () => {
+    app.listen(config.port || 3001, () => {
       console.log(`REST API on http://localhost:${config.port}/api`)
     })
   } catch (e) {

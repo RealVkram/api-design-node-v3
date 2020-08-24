@@ -3,7 +3,8 @@ import { Router } from 'express'
 const router = Router()
 
 const controller = (res, req) => {
-  res.send({ message: 'i am a request' })
+  // console.log('i am working')
+  res.send(req.body)
 }
 
 // api/item
