@@ -1,5 +1,6 @@
 import express, { Router } from 'express'
 import { json, urlencoded } from 'body-parser'
+// import bodyParser from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
 
@@ -12,6 +13,7 @@ const port = 3000
 app.use(cors()) /* cross domain resource sharing */
 app.use(json()) /* allows json description for the client */
 app.use(urlencoded({ extended: true }))
+// app.use(bodyParser)
 app.use(
   morgan('dev')
 ) /* displays on the console with timing it took for the request */
